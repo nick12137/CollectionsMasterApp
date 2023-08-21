@@ -56,6 +56,8 @@ namespace CollectionsMasterConsoleUI
             /*      Hint: Array.____()      */
             Console.WriteLine("Sorted numbers:");
 
+            Array.Sort(numbers);
+            NumberPrinter(numbers);
 
             Console.WriteLine("\n************End Arrays*************** \n");
             #endregion
