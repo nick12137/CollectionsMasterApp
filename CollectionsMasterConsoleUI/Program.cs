@@ -116,14 +116,16 @@ namespace CollectionsMasterConsoleUI
 
             //TODO: Sort the list then print results
             Console.WriteLine("Sorted Evens!!");
+            numList.Sort();
+            NumberPrinter(numList);
 
             Console.WriteLine("------------------");
 
             //TODO: Convert the list to an array and store that into a variable
-
+            var myArray = numList.ToArray();
 
             //TODO: Clear the list
-
+            numList.Clear();
 
             #endregion
         }
@@ -152,6 +154,8 @@ namespace CollectionsMasterConsoleUI
                     numberList.RemoveAt(i);
                 }
             }
+            // Could also do this
+            // var evens = numberList.Where(x => x % 2 != 0);
               
             NumberPrinter(numberList);
         }
