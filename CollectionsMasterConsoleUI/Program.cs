@@ -73,27 +73,44 @@ namespace CollectionsMasterConsoleUI
             Console.WriteLine($"(numList.Capacity)");
 
             //TODO: Populate the List with 50 random numbers between 0 and 50 you will need a method for this            
-
+            Populater(numList);
 
             //TODO: Print the new capacity
 
 
-            Console.WriteLine("---------------------");
+            Console.WriteLine($"New Capacity: {numList.Capacity}" );
 
             //TODO: Create a method that prints if a user number is present in the list
             //Remember: What if the user types "abc" accident your app should handle that!
-            Console.WriteLine("What number will you search for in the number list?");
+       
+            //declaring a variable down here
+            int userNumber;
+            //this is to make them continue to give us a reasonable number instead of a word
+            bool isANumber;
+
+            do
+            {
+                Console.WriteLine("What number will you search for in the number list?");
+                isANumber = int.TryParse(Console.ReadLine(), out userNumber);
+
+            }
+
+            while (isANumber == false);
+
+            NumberChecker(numList, userNumber);
 
             Console.WriteLine("-------------------");
 
             Console.WriteLine("All Numbers:");
             //UNCOMMENT this method to print out your numbers from arrays or lists
-            //NumberPrinter();
+            NumberPrinter(numList);
             Console.WriteLine("-------------------");
 
 
             //TODO: Create a method that will remove all odd numbers from the list then print results
             Console.WriteLine("Evens Only!!");
+
+            OddKiller(numList);
 
             Console.WriteLine("------------------");
 
@@ -128,12 +145,32 @@ namespace CollectionsMasterConsoleUI
 
         private static void OddKiller(List<int> numberList)
         {
-
+            for(int i = numberList.Count -1; i >= 0; i--)
+            {
+                if (numberList[i] % 2 != 0)
+                {
+                    numberList.RemoveAt(i);
+                }
+            }
+              
+            NumberPrinter(numberList);
         }
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
         {
+            // print to the console that the number is inside of the list
 
+            if(numberList.Contains(searchNumber))
+
+            {
+                Console.WriteLine($"Yes we have the number you're looking for");
+
+            }
+            else
+            {
+                Console.WriteLine($"These aren't the droids you're looking for");
+                Console.WriteLine($"...These aren't the droids we're looking for");
+            }
         }
 
         private static void Populater(List<int> numberList)
@@ -146,13 +183,13 @@ namespace CollectionsMasterConsoleUI
 
                 numberList.Add(number);
 
-                NumberPrinter(numberList);
+                
             }
-            
 
+            NumberPrinter(numberList);
 
         }
-
+ 
         private static void Populater(int[] numbers)
 
         {
